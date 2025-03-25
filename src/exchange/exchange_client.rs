@@ -624,6 +624,7 @@ impl ExchangeClient {
     pub async fn approve_agent(
         &self,
         wallet: Option<&LocalWallet>,
+        agent_name: Option<String>,
     ) -> Result<(String, ExchangeResponseStatus)> {
         let wallet = wallet.unwrap_or(&self.wallet);
         let key = H256::from(generate_random_key()?).encode_hex()[2..].to_string();
@@ -644,7 +645,7 @@ impl ExchangeClient {
             signature_chain_id: 421614.into(),
             hyperliquid_chain,
             agent_address: address,
-            agent_name: None,
+            agent_name,
             nonce,
         };
         let signature = sign_typed_data(&approve_agent, wallet)?;

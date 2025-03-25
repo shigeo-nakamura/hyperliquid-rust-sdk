@@ -1,5 +1,5 @@
 use ethers::signers::{LocalWallet, Signer};
-use hyperliquid_rust_sdk::{BaseUrl, ExchangeClient, InfoClient};
+use hyperliquid_rust_sdk_fork::{BaseUrl, ExchangeClient, InfoClient};
 use log::info;
 
 #[tokio::main]

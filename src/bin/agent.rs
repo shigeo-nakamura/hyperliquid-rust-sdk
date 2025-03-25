@@ -1,7 +1,7 @@
 use log::info;
 
 use ethers::signers::{LocalWallet, Signer};
-use hyperliquid_rust_sdk::{BaseUrl, ClientLimit, ClientOrder, ClientOrderRequest, ExchangeClient};
+use hyperliquid_rust_sdk_fork::{BaseUrl, ClientLimit, ClientOrder, ClientOrderRequest, ExchangeClient};
 
 #[tokio::main]
 async fn main() {
@@ -20,7 +20,7 @@ async fn main() {
         This agent cannot transfer or withdraw funds, but can for example place orders.
     */
 
-    let (private_key, response) = exchange_client.approve_agent(None).await.unwrap();
+    let (private_key, response) = exchange_client.approve_agent(None, None).await.unwrap();
     info!("Agent creation response: {response:?}");
 
     let wallet: LocalWallet = private_key.parse().unwrap();
